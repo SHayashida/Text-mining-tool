@@ -1,0 +1,161 @@
+/* --- Reset & Base --- */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --bg-color: #f4f7f9;
+    --card-bg-color: #ffffff;
+    --text-color: #333;
+    --subtext-color: #666;
+    --border-color: #e0e0e0;
+    --font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Header --- */
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+.header p {
+    margin: 5px 0 0;
+    opacity: 0.9;
+}
+
+/* --- Card Style --- */
+.card {
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 30px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+/* --- Input Area --- */
+textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    resize: vertical;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+/* --- Button & Spinner --- */
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+button:hover {
+    background-color: var(--primary-hover);
+}
+button:active {
+    transform: scale(0.99);
+}
+button:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 3px solid #fff;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* --- Results Area --- */
+.results-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+.result-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.results-container.visible .result-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* アニメーションの遅延設定 */
+.result-card:nth-child(2) { transition-delay: 0.1s; }
+.result-card:nth-child(3) { transition-delay: 0.2s; }
+
+.result-card h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+#wordCloudCanvas {
+    width: 100%;
+    height: auto;
+}
+#rankingResult ul {
+    padding-left: 20px;
+}
+#rankingResult li {
+    margin-bottom: 5px;
+}
+
+/* --- Responsive Design for Smartphone --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    .header h1 {
+        font-size: 2em;
+    }
+    .results-container {
+        grid-template-columns: 1fr;
+    }
+}

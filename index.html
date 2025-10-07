@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テキストマイニングツール Modern UI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>テキストマイニングツール</h1>
+            <p>文章を貼り付けるだけで、瞬時にインサイトを発見</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <textarea id="textInput" rows="10" placeholder="ここに分析したいテキストを入力してください..."></textarea>
+            <button id="analyzeButton">
+                <span class="button-text">分析する</span>
+                <div class="spinner" id="spinner" style="display: none;"></div>
+            </button>
+        </section>
+
+        <div id="resultsContainer" class="results-container" style="display: none;">
+            <section class="card result-card">
+                <h2>感情分析結果</h2>
+                <div id="sentimentResult"></div>
+            </section>
+            
+            <section class="card result-card">
+                <h2>ワードクラウド</h2>
+                <canvas id="wordCloudCanvas" width="600" height="400"></canvas>
+            </section>
+
+            <section class="card result-card">
+                <h2>頻出単語ランキング</h2>
+                <div id="rankingResult"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/build/kuromoji.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
